@@ -28,7 +28,7 @@ htmlcov/
 .vscode/
 .idea/
 
-# Large/local data (DO NOT TRACK)
+# Large/local data
 input_data/
 output_data/
 output_figures/
