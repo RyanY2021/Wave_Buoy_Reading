@@ -1,4 +1,4 @@
-# 202603_Wave_Buoy
+# Wave_Buoy_Reading
 
 Wave buoy displacement plotting workflow.
 
