@@ -16,6 +16,7 @@ dependencies = [
 [project.scripts]
 wave-buoy-plot-disp = "wave_buoy.plot_displacement:main"
 wave-buoy-batch-time-history = "wave_buoy.batch_export_time_history:main"
+wave-buoy-resample-disp = "wave_buoy.resample_disp_txt:main"
 
 [tool.ruff]
 line-length = 100

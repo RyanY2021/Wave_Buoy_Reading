@@ -240,13 +240,21 @@ def format_timestamp_utc(value: float) -> str:
 
 
 def write_time_history_txt(path: Path, timestamps_utc_seconds: list[float], displacement: list[float]) -> None:
-    """Write two-column time history text file: time_utc, displacement."""
+    """Write three-column time history text file: time_utc, time_s, displacement."""
     path.parent.mkdir(parents=True, exist_ok=True)
+    time_origin = float(timestamps_utc_seconds[0]) if timestamps_utc_seconds else 0.0
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["time_utc", "displacement"])
+        writer.writerow(["time_utc", "time_s", "displacement"])
         for timestamp, value in zip(timestamps_utc_seconds, displacement):
-            writer.writerow([format_timestamp_utc(float(timestamp)), f"{float(value):.6f}"])
+            elapsed_seconds = float(timestamp) - time_origin
+            writer.writerow(
+                [
+                    format_timestamp_utc(float(timestamp)),
+                    f"{elapsed_seconds:.6f}",
+                    f"{float(value):.6f}",
+                ]
+            )
 
 
 def plot_segment(series_name: str, buoy_name: str, timestamps: list[float], displacement: list[float], output_path: Path) -> None:

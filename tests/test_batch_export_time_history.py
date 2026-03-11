@@ -44,7 +44,7 @@ def test_build_segment_windows_with_segment_count() -> None:
     assert windows[2].start == parse_cli_time("2026-03-09T19:00:00Z")
 
 
-def test_write_time_history_txt_has_two_columns(tmp_path: Path) -> None:
+def test_write_time_history_txt_has_time_seconds_column(tmp_path: Path) -> None:
     output = tmp_path / "segment.txt"
     write_time_history_txt(
         path=output,
@@ -53,9 +53,9 @@ def test_write_time_history_txt_has_two_columns(tmp_path: Path) -> None:
     )
 
     lines = output.read_text(encoding="utf-8").strip().splitlines()
-    assert lines[0] == "time_utc,displacement"
-    assert lines[1] == "1970-01-01T00:16:40Z,1.234000"
-    assert lines[2] == "1970-01-01T00:16:41.5Z,5.678000"
+    assert lines[0] == "time_utc,time_s,displacement"
+    assert lines[1] == "1970-01-01T00:16:40Z,0.000000,1.234000"
+    assert lines[2] == "1970-01-01T00:16:41.5Z,1.500000,5.678000"
 
 
 def test_format_timestamp_utc_keeps_utc_suffix() -> None:

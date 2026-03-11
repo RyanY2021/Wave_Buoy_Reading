@@ -32,6 +32,7 @@ htmlcov/
 input_data/
 output_data/
 output_figures/
+output_6.33hz_resampled/
 
 # Optional local-only configs
 *.local.ini
